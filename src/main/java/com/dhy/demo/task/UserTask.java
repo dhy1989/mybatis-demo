@@ -25,15 +25,13 @@ public class UserTask {
     public void scheduledTask() throws InterruptedException {
         // do something
         System.out.println("任务开始:"+System.currentTimeMillis());
-        Thread.sleep(20000);
         List<User> users = userService.selectAll();
         for (User user : users) {
             if(user.getAge()==10){
-                user.setAge(100);
+                user.setAge(200);
             }
+            Thread.sleep(2000);
             userService.updateByPrimaryKey(user);
-            Thread.sleep(10000);
-            System.out.println(user.getName()+"--------"+user.getAge());
         }
         System.out.println("任务结束"+System.currentTimeMillis());
 
